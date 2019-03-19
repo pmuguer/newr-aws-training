@@ -18,7 +18,7 @@ let ensureAuthenticated = (req, res, next) => {
   .then((response) => {
     req.user = response.user;
     req.username = response.username;
-    // newrelic.addCustomAttribute('ar_username', response.username);
+    newrelic.addCustomAttribute('ar_username', response.username);
     return next();
   })
   .catch((err) => { return next(err); });
