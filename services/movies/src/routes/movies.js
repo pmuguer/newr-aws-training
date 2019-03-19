@@ -18,7 +18,7 @@ router.get('/user', authHelpers.ensureAuthenticated, (req, res, next) => {
   const username = req.username;
   return queries.getSavedMovies(parseInt(req.user, 10))
   .then((movies) => {
-    // newrelic.addCustomAttribute('ar_collection_count', movies.length);
+    newrelic.addCustomAttribute('ar_collection_count', movies.length);
     res.json({
       status: 'success',
       data: movies,
